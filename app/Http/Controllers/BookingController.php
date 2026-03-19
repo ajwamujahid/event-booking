@@ -23,25 +23,37 @@ class BookingController extends Controller
     public function store(StoreBookingRequest $request, Event $event)
     {
         $seatsRequested = $request->validated()['seats_booked'];
-
-        DB::transaction(function () use ($event, $seatsRequested) {
+        $booking = null;
+    
+        DB::transaction(function () use ($event, $seatsRequested, &$booking) {
             $event = Event::lockForUpdate()->findOrFail($event->id);
-
+    
             if ($seatsRequested > $event->available_seats) {
                 abort(422, 'Not enough seats available.');
             }
-
-            Booking::create([
+    
+            $booking = Booking::create([
                 'user_id'      => Auth::id(),
                 'event_id'     => $event->id,
                 'seats_booked' => $seatsRequested,
                 'status'       => 'booked',
                 'booking_date' => now(),
             ]);
-
+    
             $event->decrement('available_seats', $seatsRequested);
         });
-
+    
+        // Mail transaction ke BAHAR bhejo
+        if ($booking) {
+            try {
+                $booking->load('event', 'user');
+                Mail::to($booking->user->email)
+                    ->send(new BookingConfirmed($booking));
+            } catch (\Exception $e) {
+                logger()->warning('Email failed: ' . $e->getMessage());
+            }
+        }
+    
         return redirect()->route('bookings.index')
             ->with('success', $seatsRequested . ' seat(s) booked successfully! 🎉');
     }
