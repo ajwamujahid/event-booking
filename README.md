@@ -28,7 +28,7 @@ EventBook is a web application that enables:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/event-booking.git
+git clone https://github.com/ajwamujahid/event-booking.git
 cd event-booking
 ```
 
@@ -92,8 +92,8 @@ This will create:
 
 ### Admin User
 
- Email     admin@example.com   
- Password  password            
+ Email:   admin@example.com,  
+ Password:  password            
 
 > You can also register a new account from the Register page.
 
@@ -145,3 +145,33 @@ Visit: [http://127.0.0.1:8000](http://127.0.0.1:8000)
 - Click **"Create Event"** in the navbar to add a new event
 - On any event you created → **Edit** and **Delete** buttons are visible
 - Only the event creator can edit or delete their events
+
+
+## Email Notification Setup (Bonus Feature)
+
+Email notifications are sent automatically when a booking is confirmed.
+
+### Testing with Mailtrap (Recommended)
+
+1. Create free account at https://mailtrap.io
+2. Go to **Sandboxes -> laravel -> SMTP Settings**
+3. Update `.env` with your credentials:
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=your_mailtrap_username
+MAIL_PASSWORD=your_mailtrap_password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="noreply@eventbook.com"
+MAIL_FROM_NAME="EventBook"
+```
+
+4. Run `php artisan config:clear`
+5. Book any event → Email will appear in Mailtrap inbox
+
+### What the email contains:
+- Event name, date, time, location
+-  Number of seats booked
+- Booking confirmation status
+-  Link to My Bookings page
