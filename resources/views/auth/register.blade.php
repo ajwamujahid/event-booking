@@ -22,7 +22,7 @@
                             <input type="text" name="name"
                                 class="form-control @error('name') is-invalid @enderror"
                                 value="{{ old('name') }}"
-                                placeholder="John Doe" required autofocus>
+                                placeholder="Enter Name" required autofocus>
                         </div>
                         @error('name')
                             <div class="text-danger small mt-1">{{ $message }}</div>
@@ -36,7 +36,7 @@
                             <input type="email" name="email"
                                 class="form-control @error('email') is-invalid @enderror"
                                 value="{{ old('email') }}"
-                                placeholder="you@example.com" required>
+                                placeholder="Enter Email" required>
                         </div>
                         @error('email')
                             <div class="text-danger small mt-1">{{ $message }}</div>
@@ -49,8 +49,9 @@
                             <span class="input-group-text"><i class="fas fa-lock text-muted"></i></span>
                             <input type="password" name="password"
                                 class="form-control @error('password') is-invalid @enderror"
-                                placeholder="Min. 8 characters" required>
+                                placeholder="Enter Password" required>
                         </div>
+                        <small class="text-muted">Minimum 8 characters required</small>
                         @error('password')
                             <div class="text-danger small mt-1">{{ $message }}</div>
                         @enderror
@@ -62,7 +63,7 @@
                             <span class="input-group-text"><i class="fas fa-lock text-muted"></i></span>
                             <input type="password" name="password_confirmation"
                                 class="form-control"
-                                placeholder="Repeat password" required>
+                                placeholder="Confirm Password" required>
                         </div>
                     </div>
 
