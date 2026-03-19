@@ -121,7 +121,7 @@
 
         {{-- Header --}}
         <div class="header">
-            <div class="icon">🎟️</div>
+            <div class="icon"></div>
             <h1>Booking Confirmed!</h1>
             <p>Your seat(s) have been successfully reserved</p>
         </div>
@@ -130,47 +130,47 @@
         <div class="body">
 
             <p class="greeting">
-                Hi <strong>{{ $booking->user->name }}</strong>, great news! 🎉<br>
+                Hi <strong>{{ $booking->user->name }}</strong>, great news!<br>
                 Your booking for <strong>{{ $booking->event->title }}</strong> has been confirmed.
             </p>
 
             {{-- Booking Details Card --}}
             <div class="booking-card">
-                <div class="booking-card-header">📋 Booking Details</div>
+                <div class="booking-card-header">Booking Details</div>
                 <div class="booking-card-body">
 
                     <div class="detail-row">
-                        <span class="detail-label">🎪 Event</span>
+                        <span class="detail-label">Event</span>
                         <span class="detail-value">{{ $booking->event->title }}</span>
                     </div>
 
                     <div class="detail-row">
-                        <span class="detail-label">📅 Date</span>
+                        <span class="detail-label">Date</span>
                         <span class="detail-value">{{ $booking->event->event_date->format('D, M d Y') }}</span>
                     </div>
 
                     <div class="detail-row">
-                        <span class="detail-label">⏰ Time</span>
+                        <span class="detail-label">Time</span>
                         <span class="detail-value">{{ $booking->event->event_date->format('h:i A') }}</span>
                     </div>
 
                     <div class="detail-row">
-                        <span class="detail-label">📍 Location</span>
+                        <span class="detail-label">Location</span>
                         <span class="detail-value">{{ $booking->event->location }}</span>
                     </div>
 
                     <div class="detail-row">
-                        <span class="detail-label">🪑 Seats Booked</span>
+                        <span class="detail-label">Seats Booked</span>
                         <span class="detail-value">{{ $booking->seats_booked }} {{ $booking->seats_booked > 1 ? 'Seats' : 'Seat' }}</span>
                     </div>
 
                     <div class="detail-row">
-                        <span class="detail-label">🗓️ Booked On</span>
+                        <span class="detail-label">Booked On</span>
                         <span class="detail-value">{{ $booking->booking_date->format('M d, Y – h:i A') }}</span>
                     </div>
 
                     <div class="detail-row">
-                        <span class="detail-label">✅ Status</span>
+                        <span class="detail-label">Status</span>
                         <span class="status-badge">Confirmed</span>
                     </div>
 
@@ -179,7 +179,7 @@
 
             {{-- Info --}}
             <div class="info-box">
-                ℹ️ Please keep this email as your booking reference.
+                Please keep this email as your booking reference.
                 If you need to cancel your booking, you can do so from your
                 <strong>My Bookings</strong> page before the event date.
             </div>
@@ -193,7 +193,7 @@
 
             <p style="color:#666; font-size:14px; line-height:1.7;">
                 Thank you for using <strong style="color:#667eea;">EventBook</strong>.
-                We look forward to seeing you at the event! 🚀
+                We look forward to seeing you at the event! 
             </p>
 
         </div>
